@@ -1,26 +1,23 @@
-# Competitive Programming Progress
+<h1>Competitive Programming Progress</h1>
+<img src=https://user-images.githubusercontent.com/104838272/212726427-4d0b08fd-3e00-401c-855d-ce808b1955c2.jpg>
 
 ## Completed Topics
-- [x] Data Structures: Arrays
-- [x] Data Structures: Linked Lists
-- [x] Algorithms: Sorting (QuickSort, MergeSort, etc.)
+- [x] Time and Space Complexity Analysis
 
 ## In Progress
-- [ ] Data Structures: Stacks
-- [ ] Algorithms: Searching (Binary Search, Linear Search, etc.)
+- [ ] Learn C++ STL
 
 ## To Do
-- [ ] Data Structures: Queues
-- [ ] Algorithms: Recursion
-- [ ] Time and Space Complexity Analysis
+- [ ] Bitwise
+- [ ] Data Structures
+- [ ] Recursion
 - [ ] String Algorithms
 - [ ] Graph Algorithms
-- [ ] Advanced Topics
-- [ ] Mathematical Background
+- [ ] Algorithms: Sorting (QuickSort, MergeSort, etc.)
+- [ ] Algorithms: Searching (Binary Search, Linear Search, etc.)
 
 ## Resources
-- [Introduction to Algorithms](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844)
-- [Cracking the Coding Interview](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850)
 - [LeetCode](https://leetcode.com/)
 - [HackerRank](https://www.hackerrank.com/)
 - [Codeforces](https://codeforces.com/)
+- [Codewars](https://www.codewars.com/)
