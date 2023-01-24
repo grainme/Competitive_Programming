@@ -27,6 +27,7 @@ void solve()
       cin >> x;
       if(x==1){res++;}
     }
+    // cout<<n-cnt+(cnt+1)/2<<"\n";
     res = (res/2 + res%2)+ (T-res);
     cout << res << endl;
   }
