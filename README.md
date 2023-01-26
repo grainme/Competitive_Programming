@@ -3,13 +3,13 @@
 
 ## Completed Topics
 - [x] Time and Space Complexity Analysis
+- [x] Learn C++ STL
 
 ## In Progress
-- [ ] Learn C++ STL
+- [ ] Data Structures
 
 ## To Do
 - [ ] Bitwise
-- [ ] Data Structures
 - [ ] Recursion
 - [ ] String Algorithms
 - [ ] Graph Algorithms
