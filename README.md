@@ -16,6 +16,10 @@
 - [ ] Algorithms: Sorting (QuickSort, MergeSort, etc.)
 - [ ] Algorithms: Searching (Binary Search, Linear Search, etc.)
 
+## Journey so far
+- [x] Got place 12/130 in ITholic Contest 2023
+- [x]  Got place 57 in MNPC 2023
+
 ## Resources
 - [LeetCode](https://leetcode.com/)
 - [HackerRank](https://www.hackerrank.com/)
