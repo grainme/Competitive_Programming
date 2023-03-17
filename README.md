@@ -18,7 +18,7 @@
 
 ## Journey so far
 - [x] Got place 12/130 in ITholic Contest 2023
-- [x]  Got place 57 in MNPC 2023
+- [x]  Got place 33/90 in MNPC 2023
 
 ## Resources
 - [LeetCode](https://leetcode.com/)
