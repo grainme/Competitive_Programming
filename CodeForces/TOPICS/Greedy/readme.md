@@ -1,4 +1,4 @@
-# Greedy Approach
+# Greedy Approach # NOT_AN_ALGORITHM
 
 The Greedy approach is a problem-solving technique that makes locally optimal choices at each step with the aim of achieving a globally optimal solution. It involves making the best possible choice at the current moment without considering future consequences or revisiting previous decisions.
 
