@@ -18,4 +18,4 @@ struct cell
 
 ```
 ## Tips:
-# It's primordial to implement the "lessthan" function when it come defining struct to allow maps and other DS to sort (&& store) the element .. Otherwise g++ is going to give us an error!
+<p>It's primordial to implement the "lessthan" function when it come defining struct to allow maps and other DS to sort (&& store) the element .. Otherwise g++ is going to give us an error!</p>
