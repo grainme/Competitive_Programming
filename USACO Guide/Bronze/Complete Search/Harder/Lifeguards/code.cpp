@@ -45,7 +45,6 @@ void solve() {
     for(int i = 0; i < 1000; i++){
         time[i] = 0;
     }
-    vector<pair<int, int>> plot;
     for(int i = 0; i < n; i++){
         cin >> start[i] >> end[i];
         for(int k = start[i]; k < end[i]; k++){
