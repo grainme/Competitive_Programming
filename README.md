@@ -4,9 +4,13 @@
 ## Completed Topics
 - [x] Time and Space Complexity Analysis
 - [x] Learn C++ STL
+- [x] Two Pointers
+- [x] Sliding Window
+- [x] Prefix Sum
+
 
 ## In Progress
-- [ ] Data Structures
+- [ ] Graph Theory
 
 ## To Do
 - [ ] Bitwise
