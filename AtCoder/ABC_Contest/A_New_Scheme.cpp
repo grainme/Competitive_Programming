@@ -48,58 +48,19 @@ ll ans = 0;
 vector<ll> adj[100005];
 bool visited[100005] = {false};
 
-/*
-
--> We want to minimize S (the number)
--> We are allowed to change at most k digits
--> We should not end up with leading zeros
-
-IDEA :
--> First element to 1 (unless n = 1)
--> change the kth elements from left to right excluding the first element to 1
--> case if n==1 --> then we output 0
-
-
-*/
-
-
 // Problem's code
 void solve() {
-    cin >> n >> k;
-    cin >> s;
-    vi V(n);
-    for(int i = 0; i < n; i++){
-        V[i] = s[i]-'0';
-    }
-    if(k >=1){
-        if(n>1){
-            if(V[0]!=1){
-                V[0] = 1;
-                k--;
-            }
-        }
-        else{
-            cout << 0 << endl;
-            return;
-        }
-    }
-    else{
-        cout << n << endl;
-        return;
-    }
-    if(n>1){
-        int i = 1;
-        while(k>0 && i < n){
-            if(V[i] != 0){
-                V[i] = 0;
-                k--;
-            }
-            i++;
-        }
-    }
+    vi V(8);
     for(auto &i: V){
-        cout << i;
+        cin >> i;
     }
+    bool res = is_sorted(all(V));
+    for(auto &i: V){
+        if(i<100 || i>675 || i%25!=0){
+            res = 0;
+        }
+    }
+    cout << (res?"Yes":"No") << endl;
 }
 
 // Main function
