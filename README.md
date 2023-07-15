@@ -7,10 +7,11 @@
 - [x] Two Pointers
 - [x] Sliding Window
 - [x] Prefix Sum
-
+- [ ] Greedy Algorithms
 
 ## In Progress
 - [ ] Graph Theory
+
 
 ## To Do
 - [ ] Bitwise
@@ -19,6 +20,9 @@
 - [ ] Graph Algorithms
 - [ ] Algorithms: Sorting (QuickSort, MergeSort, etc.)
 - [ ] Algorithms: Searching (Binary Search, Linear Search, etc.)
+- [ ] Dynamic Programming
+- [ ] Monotonic Stack
+
 
 ## Journey so far
 - [x] Got place 12/130 in ITholic Contest 2023
