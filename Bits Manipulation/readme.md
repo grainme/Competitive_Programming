@@ -16,5 +16,13 @@ of our data type<br>char takes 8 bits and int takes up to 32 bits</p>
   by 2^k as we left shift by k places i will become eventually i+k
 <p>
 - Right Shift : 0110 << 2 = 01
+<p>
+  Right Shifting is the same thing as left shifting, in terms of logic, instead of multiplying by 2^k we divide by 2^k
+</p>
 
+
+<h5>Tips / Ideas</h5>
+1. To check whether the ith bit is turned on (set to 1) on a number x, we just do AND it with 2^i [ x & (1 << i) ]
+2. second
+3. third
 
