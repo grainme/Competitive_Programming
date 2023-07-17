@@ -7,6 +7,7 @@
 - [x] Two Pointers
 - [x] Sliding Window
 - [x] Prefix Sum
+- [x] Bits Manipulation (Basics)
 - [ ] Greedy Algorithms
 
 ## In Progress
