@@ -1,0 +1,1 @@
+{"name":"Local: max_sum_of_subarray","url":"/home/marouane/Competitive_Programming/Complete Search/max_sum_of_subarray.cpp","tests":[{"id":1689537291370,"input":"6\n1 -3 2 -5 4 8","output":"12"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/Complete Search/max_sum_of_subarray.cpp","group":"local","local":true}
