@@ -40,47 +40,42 @@ void fast_io()
     cin.tie(NULL), cout.tie(NULL);
 }
 
-bool comp(vector<int> A, vector<int> B)
-{
-    int ans = 1;
-    for (int i = 0; i < A.size(); i++)
-    {
-        if (A[i] != B[i])
-        {
-            
-        }
-    }
-    return ans <= 1;
-}
+/*
+
+Summary :
+
+- (mask & -mask) this operation preserves the rightmost set bit and unset every other bit
+
+- We're going to XOR the last element of the vector (deque better or even a stack) with
+  (mask & -mask), but why? so to make sure every two consecutive element we have are
+  differ in only one bit (so flipping just one bit would give the other bitset)
+
+- I used a deque just for the sake of simplicity
+
+- Time Complexity of this code is : O(2^n)
+*/
 
 // Problem's code
 void solve()
 {
+    // We need to geneate a list of 2^n elements where two consecutive elements
+    // differ in only one bit, basically, we're constructing a Gray Code!
     int n;
     cin >> n;
-    vector<vector<int>> V;
-    for (int mask = 0; mask < (1 << n); mask++)
+    // Deque to push the representation in base 10
+    deque<int> dq;
+    dq.push_back(0);
+    // We loop through all the "binaries" till 2^n - 1
+    for (int mask = 1; mask < (1 << n); mask++)
     {
-        vector<int> temp;
-        for (int i = 0; i < n; i++)
-        {
-            if (mask & (1 << i))
-            {
-                temp.push_back(1);
-            }
-            else
-            {
-                temp.push_back(0);
-            }
-        }
-        V.push_back(temp);
+        dq.push_back(dq.back() ^ (mask & -mask));
     }
-    sort(all(V), comp);
-    for (auto &i : V)
+    for (auto &i : dq)
     {
-        for (auto &k : i)
+        bitset<16> bitMask(i);
+        for (int i = n - 1; i >= 0; i--)
         {
-            cout << k;
+            cout << bitMask[i];
         }
         cout << endl;
     }
