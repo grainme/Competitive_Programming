@@ -1,0 +1,1 @@
+{"name":"Local: Upper_Bound","url":"/home/marouane/Competitive_Programming/TOPICS/Binary Search/Upper_Bound.cpp","tests":[{"id":1690312143715,"input":"6 8\n3 4 5 7 8 9","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/TOPICS/Binary Search/Upper_Bound.cpp","group":"local","local":true}

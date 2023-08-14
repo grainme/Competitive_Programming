@@ -1,0 +1,1 @@
+{"name":"Local: BS_Answer","url":"/home/marouane/Competitive_Programming/TOPICS/Binary Search/BS_Answer.cpp","tests":[{"id":1690376978509,"input":"7\n0 0 0 0 1 1 1","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/TOPICS/Binary Search/BS_Answer.cpp","group":"local","local":true}

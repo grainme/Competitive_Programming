@@ -1,0 +1,1 @@
+{"name":"Local: cons_alpha","url":"/home/marouane/Competitive_Programming/TOPICS/Prefix Sum/cons_alpha.cpp","tests":[{"id":1690915890893,"input":"aaaabbcbc","output":"a\nb\nb"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/TOPICS/Prefix Sum/cons_alpha.cpp","group":"local","local":true}
