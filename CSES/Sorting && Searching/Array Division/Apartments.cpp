@@ -50,33 +50,39 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int n, a, b, c, d;
-    cin >> n >> a >> b >> c >> d;
-    vector<int> V(n);
-    for (auto &i : V)
+    int n, m, k;
+    cin >> n >> m >> k;
+    vector<int> A(n), B(m);
+    for (auto &i : A)
     {
         cin >> i;
     }
-    vector<int> A, B;
-    for (int i = a - 1; i < b; i++)
+    for (auto &i : B)
     {
-        A.push_back(i);
+        cin >> i;
     }
-    for (int i = c - 1; i < d; i++)
+    sort(all(A));
+    sort(all(B));
+    int i = 0, j = 0, ans = 0;
+    // 45 60
+    while (i < m && j < n)
     {
-        B.push_back(i);
+        if (A[j] - k > B[i])
+        {
+            i++;
+        }
+        else if (B[i] > A[j] + k)
+        {
+            j++;
+        }
+        else
+        {
+            ans++;
+            i++;
+            j++;
+        }
     }
-    for (int i = 0; i < A.size(); i++)
-    {
-        int temp = V[A[i]];
-        V[A[i]] = V[B[i]];
-        V[B[i]] = temp;
-    }
-    for (auto &i : V)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
+    cout << ans << endl;
 }
 
 // Main function

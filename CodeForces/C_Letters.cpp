@@ -1,92 +1,33 @@
-/**  /\_/\
- *   (= ._.)
- *   / > \>
- *
- * Salam Marouane :)
- * ダークホース!
- *
- */
-
 #include <bits/stdc++.h>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-
 using namespace std;
-using namespace __gnu_pbds;
 
-#define _USE_MATH_DEFINES
-typedef long long int ll;
-typedef unsigned long long int ull;
-typedef vector<int> vi;
-template <typename T>
-using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-#define debug(x) cout << (#x) << " = " << x << endl
-#define rep(start, end, step) for (int i = start; i < end; i += step)
-#define all(v) ((v).begin()), ((v).end())
-#define rall(v) ((v).rbegin()), ((v).rend())
-#define endl "\n"
-#define pi M_PI
-#define cin_str(s) (getline(cin, s))
-// Avoid negative modulo (b + (a % b)) % b
-
-//----------CONSTANTS----------
-const ll inf = INT_MAX;
-const long long MOD = 1e9 + 7;
-#define eps 1e-9
-//----------GLOBALS----------
-
-void fast_io()
+int first_true(int lo, int hi, function<int(int)> f)
 {
-    ios::sync_with_stdio(NULL);
-    cin.tie(NULL), cout.tie(NULL);
-}
-
-// void usaco()
-//{
-//   freopen('div7.in', 'r', stdin);
-//   freopen('div7.out', 'w', stdout);
-// }
-
-// Problem's code
-void solve()
-{
-    ll n, k;
-    cin >> n >> k;
-    vector<ll> A(n), B(k);
-    for (auto &i : A)
+    lo--;
+    while (lo <= hi)
     {
-        cin >> i;
-    }
-
-    for (auto &i : B)
-    {
-        cin >> i;
-    }
-    vector<ll> pref(k + 1);
-    pref[0] = 0;
-    for (ll i = 1; i <= k; i++)
-    {
-        pref[i] = pref[i - 1] + A[i - 1];
-    }
-    for (auto &i : B)
-    {
-        int ind = lower_bound(all(pref), i) - pref.begin();
-        if (ind == 1)
+        int mid = (lo + hi) / 2;
+        cout << mid << " " << f(mid) << endl;
+        if (f(mid) == 0)
         {
-            cout << ind << " " << i << endl;
+            return -2;
         }
-        else{
-            cout << ind << " " << i - pref[ind-1] << endl;
+        else if (f(mid) == 1)
+        {
+            hi = mid - 1;
+        }
+        else
+        {
+            lo = mid + 1;
         }
     }
+    return -1;
 }
 
-// Main function
 int main()
 {
-    fast_io();
-    solve();
-}
 
-// Check Constraints next_permutation?
-// Long long or int !?
+    cout << first_true(1, 10, [](int x)
+                       { if(x>4){return 1;}else if(x<4){return -1;}else{return 0;}; })
+         << endl;
+}

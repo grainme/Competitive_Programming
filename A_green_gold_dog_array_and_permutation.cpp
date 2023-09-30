@@ -50,24 +50,30 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<int> V(n);
-    for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        int x;
-        cin >> x;
-        V[i] = x;
-    }
-    int c = V[0];
-    for (int i = 1; i < n; i++)
-    {
-        if (V[0] <= V[i])
+        int n;
+        cin >> n;
+        vector<int> V(n);
+        for (auto &i : V)
         {
-            V[0] = V[i] + 1;
+            cin >> i;
         }
+        vector<int> temp(n);
+        temp = V;
+        sort(all(V));
+        map<int, deque<int>> mpp;
+        for(int i = n; i>=0; i--){
+            mpp[V[n-i]].push_back(i);
+        }
+        for(auto &i: temp){
+            cout << mpp[i].front() << " ";
+            mpp[i].pop_front();
+        }
+        cout << endl;
     }
-    cout << V[0] - c << endl;
 }
 
 // Main function

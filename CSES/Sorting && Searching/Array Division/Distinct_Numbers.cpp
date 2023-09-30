@@ -47,61 +47,19 @@ void fast_io()
 //   freopen('div7.out', 'w', stdout);
 // }
 
-const int MAXN = 1e5 + 1;
-vector<int> adj[MAXN];
-vector<bool> visited(MAXN);
-int ans = 0, p = 0;
-
-void dfs(int s, int k, vector<int> &V)
-{
-    if (p > k)
-    {
-        return;
-    }
-    if (visited[s])
-    {
-        return;
-    }
-    visited[s] = true;
-    for (auto &i : adj[s])
-    {
-        if (V[i] == 1 && V[i - 1] == 1)
-        {
-            p++;
-        }
-        else if (V[i] == 1 && V[i - 1] == 0)
-        {
-            p = 0;
-        }
-        else
-        {
-            ans++;
-        }
-        dfs(i, k, V);
-    }
-}
-
 // Problem's code
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vector<int> V(n, 0);
-    for (int i = 1; i < n + 1; i++)
+    int n;
+    cin >> n;
+    set<int> st;
+    for (int i = 0; i < n; i++)
     {
-        cin >> V[i];
+        int x;
+        cin >> x;
+        st.insert(x);
     }
-    for (int i = 0; i < n - 1; i++)
-    {
-        int a, b;
-        cin >> a >> b;
-        a--;
-        b--;
-        adj[a].push_back(b);
-        adj[b].push_back(a);
-    }
-    dfs(1, k, V);
-    cout << ans << endl;
+    cout << st.size();
 }
 
 // Main function

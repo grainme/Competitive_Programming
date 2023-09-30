@@ -1,0 +1,99 @@
+/**  /\_/\
+ *   (= ._.)
+ *   / > \>
+ *
+ * Salam Marouane :)
+ * ダークホース!
+ *
+ */
+
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace std;
+using namespace __gnu_pbds;
+
+#define _USE_MATH_DEFINES
+typedef long long int ll;
+typedef unsigned long long int ull;
+typedef vector<int> vi;
+template <typename T>
+using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+#define debug(x) cout << (#x) << " = " << x << endl
+#define rep(start, end, step) for (int i = start; i < end; i += step)
+#define all(v) ((v).begin()), ((v).end())
+#define rall(v) ((v).rbegin()), ((v).rend())
+#define endl "\n"
+#define pi M_PI
+#define cin_str(s) (getline(cin, s))
+// Avoid negative modulo (b + (a % b)) % b
+
+//----------CONSTANTS----------
+const ll inf = INT_MAX;
+const long long MOD = 1e9 + 7;
+#define eps 1e-9
+//----------GLOBALS----------
+
+void fast_io()
+{
+    ios::sync_with_stdio(NULL);
+    cin.tie(NULL), cout.tie(NULL);
+}
+
+// void usaco()
+//{
+//   freopen('div7.in', 'r', stdin);
+//   freopen('div7.out', 'w', stdout);
+// }
+
+// Problem's code
+void solve()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        char r;
+        cin >> r;
+        string s;
+        cin >> s;
+        map<char, vi> mpp;
+        for (int i = 0; i < s.size(); i++)
+        {
+            if (s[i] == r)
+            {
+                mpp[s[i]].push_back(i);
+            }
+        }
+        string res = s + s;
+        for (int i = 0; i < res.size(); i++)
+        {
+            if (res[i] == 'g')
+            {
+                mpp[res[i]].push_back(i);
+            }
+        }
+        int max_ever = 0;
+        for (auto &i : mpp[r])
+        {
+            if(r=='g'){
+                break;
+            }
+            max_ever =  max(max_ever, *upper_bound(all(mpp['g']), i) - i);
+        }
+        cout << max_ever << endl;
+    }
+}
+
+// Main function
+int main()
+{
+    fast_io();
+    solve();
+}
+
+// Check Constraints next_permutation?
+// Long long or int !?

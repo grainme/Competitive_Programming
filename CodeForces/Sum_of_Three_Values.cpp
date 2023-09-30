@@ -47,59 +47,51 @@ void fast_io()
 //   freopen('div7.out', 'w', stdout);
 // }
 
-vector<int> adj[(int)1e5];
-bool visited[(int)1e5];
-int ans = 0, min_ever = 1e9;
-set<int> res;
-
-void dfs(int s, int n)
-{
-
-    if (visited[s])
-    {
-        return;
-    }
-    if (!visited[n])
-    {
-        ans++;
-        res.insert(s);
-    }
-    visited[s] = true;
-    for (auto &i : adj[s])
-    {
-        dfs(i, n);
-    }
-}
-
 // Problem's code
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
-    for (int i = 0; i < m; i++)
+    int n, t;
+    cin >> n >> t;
+    vector<int> V(n);
+    for (auto &i : V)
     {
-        int a, b;
-        cin >> a >> b;
-        adj[a].push_back(b);
-        adj[b].push_back(a);
+        cin >> i;
     }
-    for (int i = 1; i <= n; i++)
+    map<int, deque<int>> mpp;
+    for (int i = 0; i < n; i++)
     {
-        sort(rall(adj[i]));
+        mpp[V[i]].push_front(i);
     }
-    dfs(1, n);
-    if (visited[n])
+    sort(all(V));
+    // 1 2 5 7
+    // 1 2 3
+    for (int i = 0; i < n; i++)
     {
-        cout << ans << endl;
-        for (auto &i : res)
+        int ans = t - V[i];
+        int j = 0, k = n - 1;
+        while (j < k)
         {
-            cout << i << " ";
+            if (V[j] + V[k] == ans && k != i && j != i)
+            {
+                cout << mpp[V[i]].front() + 1 << " ";
+                mpp[V[i]].pop_front();
+                cout << mpp[V[j]].front() + 1 << " ";
+                mpp[V[j]].pop_front();
+                cout << mpp[V[k]].front() + 1 << " ";
+                mpp[V[k]].pop_front();
+                return;
+            }
+            else if (V[j] + V[k] > ans)
+            {
+                k--;
+            }
+            else
+            {
+                j++;
+            }
         }
     }
-    else
-    {
-        cout << "IMPOSSIBLE" << endl;
-    }
+    cout << "IMPOSSIBLE" << endl;
 }
 
 // Main function

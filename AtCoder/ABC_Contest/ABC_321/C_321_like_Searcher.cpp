@@ -47,26 +47,43 @@ void fast_io()
 //   freopen('div7.out', 'w', stdout);
 // }
 
+bool check(string x)
+{
+    bool res = true;
+    set<char> st;
+    st.insert(x[0]);
+    for (int i = 1; i < x.size(); i++)
+    {
+        if (x[i] > x[i - 1] || st.count(x[i]) != 0)
+        {
+            res = false;
+        }
+        st.insert(x[i]);
+    }
+    res = res && (st.size() == x.size());
+    return res;
+}
+
 // Problem's code
 void solve()
 {
-    int n;
+    ll n, MAXN = 1e9 + 5, k = 0;
     cin >> n;
-    string s, res = "";
-    cin >> s;
-    for (int i = 0; i < n; i++)
+    for (ll i = 1; i < MAXN; i++)
     {
-        if (s[i] == 'n' && s[i + 1] == 'a')
+        if (check(to_string(i - 1)))
         {
-            res += "nya";
-            i++;
-        }
-        else
-        {
-            res += s[i];
+            if (k == n)
+            {
+                cout << i - 1 << endl;
+                return;
+            }
+            else
+            {
+                k++;
+            }
         }
     }
-    cout << res << endl;
 }
 
 // Main function

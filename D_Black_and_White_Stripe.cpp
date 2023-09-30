@@ -48,11 +48,29 @@ void fast_io() {
 
 // Problem's code
 void solve() {
-    ll n;
-    cin >> n;
-    ll ans = (int)log2(n)+1;
-    ll res = pow(2, ans)-1;
-    cout << res << endl;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n, k;
+        cin >> n >> k;
+        string s;
+        cin >> s;
+        int min_diff = 1e9+7;
+        for(int i = 0; i < n; i++){
+            if(s[i]=='B'){
+                int j = i+1, toul = 1;
+                while(s[j]=='B'){
+                    toul++;
+                    j++;
+                }
+                i = j;
+                min_diff = min(min_diff, abs(k-toul));
+            }
+        }
+        cout << min_diff << endl;
+    }
+    
 }
 
 // Main function

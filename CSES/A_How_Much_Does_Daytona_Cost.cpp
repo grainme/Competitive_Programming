@@ -50,47 +50,21 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int n, m, ans = 0;
-    cin >> n >> m;
-    map<int, set<int>> mpp;
-    vector<pair<int, int>> V;
-    for (int i = 0; i < m; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
         int a, b;
         cin >> a >> b;
-        V.push_back({a, b});
-    }
-    sort(all(V), [&](pair<int, int> a, pair<int, int> b)
-         { return a.first < b.first; });
-    for (auto &i : V)
-    {
-        int a = i.first, b = i.second;
-        for (auto &k : mpp)
-        {
-            if (k.second.count(a))
-            {
-                k.second.insert(b);
+        bool res = false;
+        for(int i = 0; i < a; i++){
+            int x;
+            cin >> x;
+            if(x==b){
+                res = true;
             }
         }
-        mpp[a].insert(b);
-    }
-    vector<int> res;
-    for (auto &i : mpp)
-    {
-
-        if (i.second.size() >= n - 1)
-        {
-            ans++;
-            res.push_back(i.first);
-        }
-    }
-    if (ans != 1)
-    {
-        cout << -1 << endl;
-    }
-    else
-    {
-        cout << res[0] << endl;
+        cout << (res?"YES":"NO") << endl;
     }
 }
 
