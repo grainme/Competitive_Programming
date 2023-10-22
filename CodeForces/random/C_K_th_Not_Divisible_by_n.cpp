@@ -47,32 +47,43 @@ void fast_io()
 //   freopen('div7.out', 'w', stdout);
 // }
 
+
+/*
+
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
+
+k = 7
+n = 3
+
+1 2 4 5 7 8 10 11 13 14 16 17
+
+*/
+
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll n;
+    cin >> n;
+    while (n--)
     {
-        int n;
-        cin >> n;
-        vector<int> V(n);
-        for (auto &i : V)
+        ll a, b;
+        cin >> a >> b;
+        ll lo = 1, hi = 1e18;
+        while (lo <= hi)
         {
-            cin >> i;
+            ll mid = (lo + hi) / 2;
+            ll ok = mid - mid / a;
+            // cout << ok << endl;
+            if (ok >= b)
+            {
+                hi = mid - 1;
+            }
+            else
+            {
+                lo = mid + 1;
+            }
         }
-        vector<int> temp(n);
-        temp = V;
-        sort(all(V));
-        map<int, deque<int>> mpp;
-        for(int i = n; i>=0; i--){
-            mpp[V[n-i]].push_back(i);
-        }
-        for(auto &i: temp){
-            cout << mpp[i].front() << " ";
-            mpp[i].pop_front();
-        }
-        cout << endl;
+        cout << lo << endl;
     }
 }
 

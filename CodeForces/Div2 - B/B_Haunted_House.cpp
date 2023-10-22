@@ -54,15 +54,26 @@ void solve()
     cin >> t;
     while (t--)
     {
-        
-        int n;
+        ll n;
         cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        string x;
+        cin >> x;
+        reverse(x.begin(), x.end());
+        map<ll, vector<ll>> mpp;
+        for (ll i = 0; i < n; i++)
         {
-            cout << k << " ";
-            k+=2;
+            mpp[x[i]].push_back(i + 1);
+        }
+
+        ll res = 0, cnt = 1;
+        for (auto &i : mpp['0'])
+        {
+            cout << i - cnt + res << " ";
+            res += i - cnt++;
+        }
+        for (ll i = 0; i < n - mpp['0'].size(); i++)
+        {
+            cout << "-1 ";
         }
         cout << endl;
     }

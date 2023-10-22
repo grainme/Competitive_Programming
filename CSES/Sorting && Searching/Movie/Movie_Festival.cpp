@@ -50,22 +50,28 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    vector<pair<int, int>> V(n);
+    for (int i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cout << k << " ";
-            k+=2;
-        }
-        cout << endl;
+        int a, b;
+        cin >> a >> b;
+        V[i] = {a, b};
     }
+    sort(all(V), [](pair<int, int> A, pair<int, int> B)
+         { return A.second < B.second; });
+    int mx_end = V[0].second, ans = 1;
+
+    for (int i = 1; i < n; i++)
+    {
+        if (V[i].first >= mx_end)
+        {
+            ans++;
+            mx_end = V[i].second;
+        }
+    }
+    cout << ans << endl;
 }
 
 // Main function

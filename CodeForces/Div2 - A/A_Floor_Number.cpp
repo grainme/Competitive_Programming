@@ -1,15 +1,15 @@
 /**  /\_/\
-*   (= ._.)
-*   / > \>
-*
-* Salam Marouane :)
-* ダークホース!
-*  
-*/
+ *   (= ._.)
+ *   / > \>
+ *
+ * Salam Marouane :)
+ * ダークホース!
+ *
+ */
 
 #include <bits/stdc++.h>
-#include<ext/pb_ds/assoc_container.hpp>
-#include<ext/pb_ds/tree_policy.hpp>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 
 using namespace std;
 using namespace __gnu_pbds;
@@ -21,7 +21,7 @@ typedef vector<int> vi;
 template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 #define debug(x) cout << (#x) << " = " << x << endl
-#define rep(start, end, step) for(int i = start; i < end; i += step)
+#define rep(start, end, step) for (int i = start; i < end; i += step)
 #define all(v) ((v).begin()), ((v).end())
 #define rall(v) ((v).rbegin()), ((v).rend())
 #define endl "\n"
@@ -35,29 +35,44 @@ const long long MOD = 1e9 + 7;
 #define eps 1e-9
 //----------GLOBALS----------
 
-void fast_io() {
-  ios::sync_with_stdio(NULL);
-  cin.tie(NULL), cout.tie(NULL);
+void fast_io()
+{
+    ios::sync_with_stdio(NULL);
+    cin.tie(NULL), cout.tie(NULL);
 }
 
-//void usaco()
+// void usaco()
 //{
-//  freopen('div7.in', 'r', stdin);
-//  freopen('div7.out', 'w', stdout);
-//}
+//   freopen('div7.in', 'r', stdin);
+//   freopen('div7.out', 'w', stdout);
+// }
 
 // Problem's code
-void solve() {
-    ll x;
-    cin >> x;
-    ll s = pow(2, 31);
-    cout << ((x>=-s && x<=s-1)?"Yes":"No") << endl;
+void solve()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n, x;
+        cin >> n >> x;
+        if (n == 1 || n == 2)
+        {
+            cout << 1 << endl;
+        }
+        else
+        {
+            n-=2;
+            cout << ceil(n / (float)x) + 1 << endl;
+        }
+    }
 }
 
 // Main function
-int main() {
-  fast_io();
-  solve();
+int main()
+{
+    fast_io();
+    solve();
 }
 
 // Check Constraints next_permutation?

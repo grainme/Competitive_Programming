@@ -54,17 +54,43 @@ void solve()
     cin >> t;
     while (t--)
     {
-        
         int n;
         cin >> n;
-        vector<int> A(n);
-        int k = 1;
+        vector<int> V(n);
         for (int i = 0; i < n; i++)
         {
-            cout << k << " ";
-            k+=2;
+            cin >> V[i];
         }
-        cout << endl;
+        bool res = false;
+        for (int i = 0; i < n - 1; i++)
+        {
+            if (V[i] % 2 == 0)
+            {
+                cout << 1 << endl
+                     << i + 1 << endl;
+                res = true;
+                break;
+            }
+            else
+            {
+                if (V[i + 1] % 2 != 0)
+                {
+                    cout << 2 << endl
+                         << i + 1 << " " << i + 2 << endl;
+                    res = true;
+                    break;
+                }
+            }
+        }
+        if (!res && V[n - 1] % 2 == 0)
+        {
+            cout << 1 << endl
+                 << n << endl;
+        }
+        else if (!res)
+        {
+            cout << -1 << endl;
+        }
     }
 }
 

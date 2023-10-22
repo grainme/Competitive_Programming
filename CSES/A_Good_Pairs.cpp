@@ -54,17 +54,26 @@ void solve()
     cin >> t;
     while (t--)
     {
-        
         int n;
         cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        map<int, int> mpp;
+        vector<int> V;
+        for (int i = 0; i < n; ++i)
         {
-            cout << k << " ";
-            k+=2;
+            int x;
+            cin >> x;
+            V.push_back(x);
+            mpp[x] = i;
         }
-        cout << endl;
+        sort(all(V));
+        if (n == 1)
+        {
+            cout << 1 << " " << 1 << endl;
+        }
+        else
+        {
+            cout << mpp[V[n - 1]] + 1 << " " << mpp[V[0]] + 1 << endl;
+        }
     }
 }
 

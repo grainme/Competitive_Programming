@@ -50,22 +50,28 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll n;
+    cin >> n;
+    ll max_so_far = 0, sum_so_far = 0;
+    vector<int> V(n);
+    for (auto &i : V)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cout << k << " ";
-            k+=2;
-        }
-        cout << endl;
+        cin >> i;
     }
+    max_so_far = V[0];
+    for (ll i = 0; i < n; i++)
+    {
+        if (sum_so_far >= 0)
+        {
+            sum_so_far += V[i];
+        }
+        else
+        {
+            sum_so_far = V[i];
+        }
+        max_so_far = max(max_so_far, sum_so_far);
+    }
+    cout << max_so_far << endl;
 }
 
 // Main function

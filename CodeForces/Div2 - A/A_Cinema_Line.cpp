@@ -50,22 +50,61 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    ll change = 0;
+    map<int, int> mpp;
+    for (int i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        int x;
+        cin >> x;
+        int check = x - 25;
+        if (check == 0)
         {
-            cout << k << " ";
-            k+=2;
+            mpp[25]++;
         }
-        cout << endl;
+        else if (check > 0)
+        {
+            // 50 100
+            if (check == 75)
+            {
+                mpp[100]++;
+                if (mpp[25] > 0 && mpp[50] > 0)
+                {
+                    mpp[25] --;
+                    mpp[50]--;
+                }
+                else if (mpp[25] >= 3)
+                {
+                    mpp[25]-=3;
+                }
+                else
+                {
+                    cout << "NO" << endl;
+                    return;
+                }
+            }
+            else if (check == 25)
+            {
+                mpp[50]++;
+                if (mpp[25] == 0)
+                {
+                    cout << "NO" << endl;
+                    return;
+                }
+                else
+                {
+                    mpp[25]--;
+                                }
+            }
+        }
+        else
+        {
+            cout << "NO" << endl;
+            return;
+        }
     }
+    cout << "YES" << endl;
 }
 
 // Main function

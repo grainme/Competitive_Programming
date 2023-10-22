@@ -41,21 +41,19 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
-    vector<int> V(n);
-    map<int, int> indices;
-    for (int i = 0; i < n; i++)
+    vector<ll> V(n + 1);
+    for (ll i = 1; i <= n; i++)
     {
-        int x;
+        ll x;
         cin >> x;
-        V[i] = x;
-        indices[x] = i;
+        V[x] = i;
     }
-    int ans = 0;
-    for (int i = 0; i < n; i++)
+    ll ans = 1;
+    for (ll i = 1; i <= n; i++)
     {
-        if (V[i+1]<=n && (indices[V[i] + 1] < indices[V[i]] || indices[V[i]+1]==0))
+        if (V[i] > i)
         {
             ans++;
         }

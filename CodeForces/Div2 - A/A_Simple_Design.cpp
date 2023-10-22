@@ -50,21 +50,26 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
+    ll t;
     cin >> t;
     while (t--)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        ll a, b;
+        cin >> a >> b;
+        for (ll i = a; i <= 1e18; i++)
         {
-            cout << k << " ";
-            k+=2;
+            string s = to_string(i);
+            ll sm = 0;
+            for (auto &i : s)
+            {
+                sm += (i - '0');
+            }
+            if (sm % b == 0)
+            {
+                cout << i << endl;
+                break;
+            }
         }
-        cout << endl;
     }
 }
 

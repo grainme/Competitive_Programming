@@ -50,22 +50,20 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    vector<int> V(n);
+    for (auto &i : V)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cout << k << " ";
-            k+=2;
-        }
-        cout << endl;
+        cin >> i;
     }
+    sort(all(V));
+    ll ans = 0;
+    for (auto &i : V)
+    {
+        ans += abs(i - V[n / 2]);
+    }
+    cout << ans << endl;
 }
 
 // Main function

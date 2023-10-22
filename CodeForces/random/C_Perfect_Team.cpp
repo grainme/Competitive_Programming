@@ -47,6 +47,25 @@ void fast_io()
 //   freopen('div7.out', 'w', stdout);
 // }
 
+bool ok(int c, int m, int x, ll mid)
+{
+    ll s = 0;
+    ll c_r = c - mid, m_r = m - mid, x_r = x - mid;
+    if (c_r >= 0 && m_r >= 0)
+    {
+        s += c_r + m_r;
+        if (x_r >= 0 || s >= abs(x_r))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    return false;
+}
+
 // Problem's code
 void solve()
 {
@@ -54,17 +73,22 @@ void solve()
     cin >> t;
     while (t--)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        int c, m, x;
+        cin >> c >> m >> x;
+        ll lo = 1, hi = 1e9, mid;
+        while (lo <= hi)
         {
-            cout << k << " ";
-            k+=2;
+            mid = (lo + hi) / 2;
+            if (ok(c, m, x, mid))
+            {
+                lo = mid + 1;
+            }
+            else
+            {
+                hi = mid - 1;
+            }
         }
-        cout << endl;
+        cout <<  hi << endl;
     }
 }
 

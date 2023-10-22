@@ -54,17 +54,16 @@ void solve()
     cin >> t;
     while (t--)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        int n, m;
+        cin >> n >> m;
+        vector<int> V(n + 1);
+        V[0] = 0;
+        for (int i = 1; i <= n; i++)
         {
-            cout << k << " ";
-            k+=2;
+            cin >> V[i];
         }
-        cout << endl;
+        int ans = accumulate(all(V), 0);
+        cout << (ans == m ? "YES" : "NO") << endl;
     }
 }
 

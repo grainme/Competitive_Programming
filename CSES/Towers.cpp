@@ -50,22 +50,25 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll n;
+    cin >> n;
+    vector<ll> res;
+    for (ll i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        ll x;
+        cin >> x;
+        auto it = upper_bound(all(res), x);
+        if (it != res.end())
         {
-            cout << k << " ";
-            k+=2;
+            // cout << x << " " << *it << " " << (it - res.begin()) << endl;
+            res[it - res.begin()] = x;
         }
-        cout << endl;
+        else
+        {
+            res.push_back(x);
+        }
     }
+    cout << res.size() << endl;
 }
 
 // Main function

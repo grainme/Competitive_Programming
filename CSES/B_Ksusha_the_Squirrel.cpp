@@ -50,22 +50,23 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cout << k << " ";
-            k+=2;
+    int n, k;
+    cin >> n >> k;
+    vector<int> V;
+    for(int i = 0; i < n; i++){
+        char x;
+        cin >> x;
+        if(x=='.'){
+            V.push_back(i);
         }
-        cout << endl;
     }
+    for(int i = 1; i < V.size(); i++){
+        if(V[i]-V[i-1] > k){
+            cout << "NO" << endl;
+            return;
+        }
+    }
+    cout << "YES" << endl;
 }
 
 // Main function

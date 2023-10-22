@@ -1,15 +1,15 @@
 /**  /\_/\
-*   (= ._.)
-*   / > \>
-*
-* Salam Marouane :)
-* ダークホース!
-*  
-*/
+ *   (= ._.)
+ *   / > \>
+ *
+ * Salam Marouane :)
+ * ダークホース!
+ *
+ */
 
 #include <bits/stdc++.h>
-#include<ext/pb_ds/assoc_container.hpp>
-#include<ext/pb_ds/tree_policy.hpp>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 
 using namespace std;
 using namespace __gnu_pbds;
@@ -21,7 +21,7 @@ typedef vector<int> vi;
 template <typename T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 #define debug(x) cout << (#x) << " = " << x << endl
-#define rep(start, end, step) for(int i = start; i < end; i += step)
+#define rep(start, end, step) for (int i = start; i < end; i += step)
 #define all(v) ((v).begin()), ((v).end())
 #define rall(v) ((v).rbegin()), ((v).rend())
 #define endl "\n"
@@ -35,48 +35,49 @@ const long long MOD = 1e9 + 7;
 #define eps 1e-9
 //----------GLOBALS----------
 
-void fast_io() {
-  ios::sync_with_stdio(NULL);
-  cin.tie(NULL), cout.tie(NULL);
+void fast_io()
+{
+    ios::sync_with_stdio(NULL);
+    cin.tie(NULL), cout.tie(NULL);
 }
 
-//void usaco()
+// void usaco()
 //{
-//  freopen('div7.in', 'r', stdin);
-//  freopen('div7.out', 'w', stdout);
-//}
+//   freopen('div7.in', 'r', stdin);
+//   freopen('div7.out', 'w', stdout);
+// }
 
 // Problem's code
-void solve() {
+void solve()
+{
     int t;
     cin >> t;
     while (t--)
     {
-        int n, k;
-        cin >> n >> k;
         string s;
         cin >> s;
-        int min_diff = 1e9+7;
-        for(int i = 0; i < n; i++){
-            if(s[i]=='B'){
-                int j = i+1, toul = 1;
-                while(s[j]=='B'){
-                    toul++;
-                    j++;
-                }
-                i = j;
-                min_diff = min(min_diff, abs(k-toul));
+        set<char> st;
+        int ans = 0;
+        // lollipops  --> lolli
+        for (auto &i : s)
+        {
+            st.insert(i);
+            if (st.size() > 3)
+            {
+                ans++;
+                st.clear();
+                st.insert(i);
             }
         }
-        cout << min_diff << endl;
+        cout << (st.size() > 0 ? ans + 1 : ans) << endl;
     }
-    
 }
 
 // Main function
-int main() {
-  fast_io();
-  solve();
+int main()
+{
+    fast_io();
+    solve();
 }
 
 // Check Constraints next_permutation?

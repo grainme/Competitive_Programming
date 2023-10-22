@@ -50,22 +50,49 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n, x;
+    cin >> n >> x;
+    vector<int> V(n);
+    map<int, deque<int>> mpp;
+    for (int i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cout << k << " ";
-            k+=2;
-        }
-        cout << endl;
+        cin >> V[i];
+        mpp[V[i]].push_front(i + 1);
     }
+    sort(all(V));
+    for (int i = 0; i < n; i++)
+    {
+        for (int k = i + 1; k < n; k++)
+        {
+            int third = x - V[i] - V[k];
+            // Khassni n9eleb 3la third = z + w
+            int y = k + 1, w = n - 1;
+            while (y < w)
+            {
+                if (V[y] + V[w] < third)
+                {
+                    y++;
+                }
+                else if (V[y] + V[w] > third)
+                {
+                    w--;
+                }
+                else
+                {
+                    cout << mpp[V[i]].front() << " ";
+                    mpp[V[i]].pop_front();
+                    cout << mpp[V[k]].front() << " ";
+                    mpp[V[k]].pop_front();
+                    cout << mpp[V[y]].front() << " ";
+                    mpp[V[y]].pop_front();
+                    cout << mpp[V[w]].front() << " ";
+                    mpp[V[w]].pop_front();
+                    return;
+                }
+            }
+        }
+    }
+    cout << "IMPOSSIBLE" << endl;
 }
 
 // Main function

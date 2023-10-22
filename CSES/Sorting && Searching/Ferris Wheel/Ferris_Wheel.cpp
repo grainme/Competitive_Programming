@@ -50,22 +50,29 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> V(n);
+    for (auto &i : V)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cout << k << " ";
-            k+=2;
-        }
-        cout << endl;
+        cin >> i;
     }
+    sort(rall(V));
+    ll i = 0, j = n - 1, ans = 0;
+    while (i <= j)
+    {
+        if (V[i] + V[j] <= k)
+        {
+            i++;
+            j--;
+        }
+        else
+        {
+            i++;
+        }
+        ans++;
+    }
+    cout << ans << endl;
 }
 
 // Main function

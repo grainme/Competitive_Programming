@@ -50,21 +50,41 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n, eve = 0, odd = 0;
+    cin >> n;
+    vector<int> V(n);
+    for (int i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        int x;
+        cin >> x;
+        if (x % 2 == 0)
         {
-            cout << k << " ";
-            k+=2;
+            eve++;
         }
-        cout << endl;
+        else
+        {
+            odd++;
+        }
+        V[i] = x;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (eve > odd)
+        {
+            if (V[i] % 2 != 0)
+            {
+                cout << i + 1 << endl;
+                return;
+            }
+        }
+        else
+        {
+            if (V[i] % 2 == 0)
+            {
+                cout << i + 1 << endl;
+                return;
+            }
+        }
     }
 }
 

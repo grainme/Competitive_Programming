@@ -50,22 +50,26 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll n;
+    cin >> n;
+    vector<ll> V(n);
+    ll prec = 0, ans = 0, max_s = 0;
+    for (ll i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        ll x;
+        cin >> x;
+        if (x > prec)
         {
-            cout << k << " ";
-            k+=2;
+            ans++;
         }
-        cout << endl;
+        else
+        {
+            max_s = max(max_s, ans);
+            ans = 1;
+        }
+        prec = x;
     }
+    cout << max(max_s, ans) << endl;
 }
 
 // Main function

@@ -50,21 +50,33 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> B(k);
+    multiset<ll, greater<ll>> A;
+    for (ll i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        ll x;
+        cin >> x;
+        A.insert(x);
+    }
+    for (ll i = 0; i < k; i++)
+    {
+        cin >> B[i];
+    }
+
+    for (auto &i : B)
+    {
+        auto ind = A.lower_bound(i);
+        if (ind != A.end())
         {
-            cout << k << " ";
-            k+=2;
+            cout << *ind << endl;
+            A.erase(ind);
         }
-        cout << endl;
+        else
+        {
+            cout << -1 << endl;
+        }
     }
 }
 

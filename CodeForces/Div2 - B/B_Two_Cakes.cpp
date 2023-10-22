@@ -47,25 +47,31 @@ void fast_io()
 //   freopen('div7.out', 'w', stdout);
 // }
 
+bool ok(int x, int a, int b, int c)
+{
+    return a / x + b / x >= c;
+}
+
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n, a, b;
+    cin >> n >> a >> b;
+    int lo = 1, hi = min(a, b), ans;
+    while (lo <= hi)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        int mid = (lo + hi) / 2;
+        if (ok(mid, a, b, n))
         {
-            cout << k << " ";
-            k+=2;
+            lo = mid + 1;
+            ans = mid;
         }
-        cout << endl;
+        else
+        {
+            hi = mid - 1;
+        }
     }
+    cout << ans << endl;
 }
 
 // Main function

@@ -50,22 +50,32 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    vector<int> V(n);
+    for (auto &i : V)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cout << k << " ";
-            k+=2;
-        }
-        cout << endl;
+        cin >> i;
     }
+    int max_seq = 0, max_ever = 0;
+    map<int, int> mpp;
+    for (int i = 0; i < n; i++)
+    {
+        if (mpp[V[i]] == 0)
+        {
+            max_seq++;
+            mpp[V[i]]++;
+        }
+        else {
+            if(mpp[V[i]]>1){
+                max_ever=max_seq;
+                max_seq=1;
+            }
+            mpp[V[i]]++;
+
+        }
+    }
+    cout << max_ever << endl;
 }
 
 // Main function

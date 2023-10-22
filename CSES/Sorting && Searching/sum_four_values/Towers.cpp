@@ -50,22 +50,36 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    map<int, priority_queue<int>> mpp;
+    priority_queue<int> q;
+    for (int i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
-        {
-            cout << k << " ";
-            k+=2;
-        }
-        cout << endl;
+        int x;
+        cin >> x;
+        mpp[x].push(i);
+        q.push(x);
     }
+    // 10 10 9 7 6 5 4 4 4 2
+    int first_ele = q.top(), ans = 1;
+    q.pop();
+    while (!q.empty())
+    {
+        int next_ele = q.top();
+        q.pop();
+        int ind1 = mpp[next_ele].top();
+        mpp[first_ele].pop();
+        int ind2 = mpp[first_ele].top();
+        // mpp[first_ele].pop();
+        cout << ind1 << " " << ind2 << " " << next_ele << " " << first_ele << endl;
+        if (ind1 <= ind2)
+        {
+            ans++;
+        }
+        first_ele = next_ele;
+    }
+    cout << ans << endl;
 }
 
 // Main function

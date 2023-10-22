@@ -50,22 +50,26 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n, ans = 0;
+    cin >> n;
+    set<int, greater<int>> st;
+    for (int i = 0; i < n; i++)
     {
-        
-        int n;
-        cin >> n;
-        vector<int> A(n);
-        int k = 1;
-        for (int i = 0; i < n; i++)
+        int k;
+        cin >> k;
+        auto ind = st.lower_bound(k);
+        if (ind == st.end() || *ind != k - 1)
         {
-            cout << k << " ";
-            k+=2;
+            cout << *ind << " " << k << endl;
+            st.insert(k);
         }
-        cout << endl;
+        else
+        {
+            st.erase(ind);
+            ans++;
+        }
     }
+    cout << ans << endl;
 }
 
 // Main function
