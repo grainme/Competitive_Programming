@@ -1,0 +1,1 @@
+{"name":"Local: max_sliding_window","url":"/home/marouane/Competitive_Programming/revision/max_sliding_window.cpp","tests":[{"id":1705784319302,"input":"4 8\n-7 -8 7 5 7 1 6 0","output":"7 7 7 7 7"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/revision/max_sliding_window.cpp","group":"local","local":true}
