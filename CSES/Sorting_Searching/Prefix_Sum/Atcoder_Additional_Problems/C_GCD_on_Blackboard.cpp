@@ -47,30 +47,36 @@ void fast_io()
 //   freopen('div7.out', 'w', stdout);
 // }
 
+// Key Idea : To speed up the process , we can calculate the GCDs of every prefix and suffix.
+
 // Problem's code
 void solve()
 {
-    ll n;
+    int n;
     cin >> n;
-    vector<ll> pref(n + 1, 0);
-    for (ll i = 1; i <= n; i++)
+    vector<int> V(n, 0);
+    for (int i = 0; i < n; i++)
     {
-        ll x;
-        cin >> x;
-        pref[i] = pref[i - 1] + x;
+        cin >> V[i];
     }
-    map<ll, ll> mpp;
-    ll ans = 0;
-    mpp[0]++;
-    for (ll i = 1; i <= n; i++)
+    vector<int> pref(n + 1, 0), suff(n + 2, 0);
+
+    for (int i = 1; i <= n; ++i)
     {
-        if (mpp[(n + (pref[i] % n)) % n] > 0)
-        {
-            ans += mpp[(n + (pref[i] % n)) % n];
-        }
-        mpp[(n + (pref[i] % n)) % n]++;
+        pref[i] = __gcd(pref[i - 1], V[i - 1]);
     }
-    cout << ans << endl;
+
+    for (int i = n; i >= 1; --i)
+    {
+        suff[i] = __gcd(suff[i + 1], V[i - 1]);
+    }
+
+    int res = 1;
+    for (int i = 1; i <= n; ++i)
+    {
+        res = max(res, __gcd(pref[i - 1], suff[i + 1]));
+    }
+    cout << res << endl;
 }
 
 // Main function
