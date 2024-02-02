@@ -41,39 +41,54 @@ void fast_io()
     cin.tie(NULL), cout.tie(NULL);
 }
 
-// void usaco()
-//{
-//   freopen('div7.in', 'r', stdin);
-//   freopen('div7.out', 'w', stdout);
-// }
+void usaco()
+{
+    freopen("pairup.in", "r", stdin);
+    freopen("pairup.out", "w", stdout);
+}
 
 // Problem's code
 void solve()
 {
-    // Key Idea of this problem is to use Prefix Sum 2D such that the existence of a tree = 1 otherwise 0
-    ll n, q;
-    cin >> n >> q;
-    vector<vector<ll>> pref(n + 1, vector<ll>(n + 1, 0));
-    for (ll i = 1; i <= n; i++)
+    ll n;
+    cin >> n;
+    vector<pair<ll, ll>> V;
+    // i9deru ikunu duplicates f TIME, so using Hashmap will result on a colision
+    // if there were no duplicates, it would be a simple logical 2P Question!
+    // lkbir m3a sghir sf o dayza! -- ms db kin duplicates which is making the problem slightly dubious!
+    for (ll i = 0; i < n; i++)
     {
-        for (ll k = 1; k <= n; k++)
+        ll nbr_cows, time;
+        cin >> nbr_cows >> time;
+        V.push_back({nbr_cows, time});
+    }
+    sort(all(V), [&](pair<ll, ll> A, pair<ll, ll> B)
+         { return A.second < B.second; });
+    ll i = 0, j = n - 1, modL = 0, modR = 0;
+    ll max_val = 0;
+    while (i < j)
+    {
+        max_val = max(max_val, V[i].second + V[j].second);
+        modL++;
+        modR++;
+        if (modL >= V[i].first)
         {
-            char x;
-            cin >> x;
-            pref[i][k] = pref[i][k - 1] + pref[i - 1][k] - pref[i - 1][k - 1] + (x == '*');
+            modL = 0;
+            i++;
+        }
+        if (modR >= V[j].first)
+        {
+            modR = 0;
+            j--;
         }
     }
-    while (q--)
-    {
-        ll y1, x1, y2, x2;
-        cin >> y1 >> x1 >> y2 >> x2;
-        cout << pref[y2][x2] - pref[y1 - 1][x2] - pref[y2][x1 - 1] + pref[y1 - 1][x1 - 1] << endl;
-    }
+    cout << max_val << endl;
 }
 
 // Main function
 int main()
 {
+    usaco();
     fast_io();
     solve();
 }

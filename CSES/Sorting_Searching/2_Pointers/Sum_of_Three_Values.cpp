@@ -50,25 +50,50 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    // Key Idea of this problem is to use Prefix Sum 2D such that the existence of a tree = 1 otherwise 0
-    ll n, q;
-    cin >> n >> q;
-    vector<vector<ll>> pref(n + 1, vector<ll>(n + 1, 0));
-    for (ll i = 1; i <= n; i++)
+    int n, x;
+    cin >> n >> x;
+    vector<int> V(n);
+    // Map to track the orginal indices before sorting the array
+    map<int, deque<int>> mpp;
+    for (int i = 0; i < n; i++)
     {
-        for (ll k = 1; k <= n; k++)
+        int x;
+        cin >> x;
+        V[i] = x;
+        mpp[x].push_back(i + 1);
+    }
+    sort(all(V));
+    // I guess we can get away with O(N^2) because N < 5000 !!
+    // 1 2 3
+    for (int k = 0; k < n; k++)
+    {
+        int i = 0, j = n - 1;
+        // I'm trying to convert this problem to 2_Sum_Problem instead of 3!
+        // V[i]  + V[j] = x - V[k]
+        int second_member = x - V[k];
+        while (i < j)
         {
-            char x;
-            cin >> x;
-            pref[i][k] = pref[i][k - 1] + pref[i - 1][k] - pref[i - 1][k - 1] + (x == '*');
+            if (V[i] + V[j] == second_member && i != k && i != j && k != j)
+            {
+                cout << mpp[V[i]].front() << " ";
+                mpp[V[i]].pop_front();
+                cout << mpp[V[j]].front() << " ";
+                mpp[V[j]].pop_front();
+                cout << mpp[V[k]].front();
+                return;
+            }
+            else if (V[i] + V[j] > second_member)
+            {
+                j--;
+            }
+            else
+            {
+                i++;
+            }
         }
     }
-    while (q--)
-    {
-        ll y1, x1, y2, x2;
-        cin >> y1 >> x1 >> y2 >> x2;
-        cout << pref[y2][x2] - pref[y1 - 1][x2] - pref[y2][x1 - 1] + pref[y1 - 1][x1 - 1] << endl;
-    }
+
+    cout << "IMPOSSIBLE" << endl;
 }
 
 // Main function

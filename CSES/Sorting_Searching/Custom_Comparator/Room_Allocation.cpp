@@ -50,24 +50,39 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    // Key Idea of this problem is to use Prefix Sum 2D such that the existence of a tree = 1 otherwise 0
-    ll n, q;
-    cin >> n >> q;
-    vector<vector<ll>> pref(n + 1, vector<ll>(n + 1, 0));
-    for (ll i = 1; i <= n; i++)
+    int t;
+    cin >> t;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+    vector<pair<pair<int, int>, int>> V;
+    for (int i = 0; i < t; i++)
     {
-        for (ll k = 1; k <= n; k++)
-        {
-            char x;
-            cin >> x;
-            pref[i][k] = pref[i][k - 1] + pref[i - 1][k] - pref[i - 1][k - 1] + (x == '*');
-        }
+        int a, b;
+        cin >> a >> b;
+        V.push_back({{a, b}, i});
     }
-    while (q--)
+    sort(all(V));
+    int nbr_room = 0, max_room = 0;
+    vector<int> res(t);
+    for (auto &i : V)
     {
-        ll y1, x1, y2, x2;
-        cin >> y1 >> x1 >> y2 >> x2;
-        cout << pref[y2][x2] - pref[y1 - 1][x2] - pref[y2][x1 - 1] + pref[y1 - 1][x1 - 1] << endl;
+        if (!pq.empty() && i.first.first > pq.top().first)
+        {
+            int first_room_empty = pq.top().second;
+            pq.pop();
+            pq.push({i.first.second, first_room_empty});
+            res[i.second] = first_room_empty;
+        }
+        else
+        {
+            pq.push({i.first.second, ++nbr_room});
+            res[i.second] = nbr_room;
+        }
+        max_room = max(max_room, nbr_room);
+    }
+    cout << max_room << endl;
+    for (auto &i : res)
+    {
+        cout << i << " ";
     }
 }
 

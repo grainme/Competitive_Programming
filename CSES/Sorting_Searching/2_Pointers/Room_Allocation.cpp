@@ -50,24 +50,41 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    // Key Idea of this problem is to use Prefix Sum 2D such that the existence of a tree = 1 otherwise 0
-    ll n, q;
-    cin >> n >> q;
-    vector<vector<ll>> pref(n + 1, vector<ll>(n + 1, 0));
-    for (ll i = 1; i <= n; i++)
+    int t;
+    cin >> t;
+    multiset<int> on;
+    multiset<int> off;
+    while (t--)
     {
-        for (ll k = 1; k <= n; k++)
-        {
-            char x;
-            cin >> x;
-            pref[i][k] = pref[i][k - 1] + pref[i - 1][k] - pref[i - 1][k - 1] + (x == '*');
-        }
+        int a, b;
+        cin >> a >> b;
+        on.insert(a);
+        off.insert(b);
     }
-    while (q--)
+    // lewel time imta tchedt, taniya ra9m dyl lghurfa
+    multiset<pair<int, int>> rooms;
+    int nbr_room = 0, ans = 0;
+    vector<int> res;
+    for (auto &i : on)
     {
-        ll y1, x1, y2, x2;
-        cin >> y1 >> x1 >> y2 >> x2;
-        cout << pref[y2][x2] - pref[y1 - 1][x2] - pref[y2][x1 - 1] + pref[y1 - 1][x1 - 1] << endl;
+        if (*off.begin() >= i)
+        {
+            nbr_room++;
+            rooms.insert({*off.begin(), nbr_room});
+            res.push_back(nbr_room);
+        }
+        else
+        {
+            nbr_room--;
+            res.push_back((*rooms.begin()).second);
+            rooms.erase(rooms.begin());
+        }
+        ans = max(ans, nbr_room);
+    }
+    cout << ans << endl;
+    for (auto &i : res)
+    {
+        cout << i << " ";
     }
 }
 

@@ -50,25 +50,24 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    // Key Idea of this problem is to use Prefix Sum 2D such that the existence of a tree = 1 otherwise 0
-    ll n, q;
-    cin >> n >> q;
-    vector<vector<ll>> pref(n + 1, vector<ll>(n + 1, 0));
-    for (ll i = 1; i <= n; i++)
+    int n, t;
+    cin >> n >> t;
+    vector<int> V(n);
+    for (auto &i : V)
     {
-        for (ll k = 1; k <= n; k++)
+        cin >> i;
+    }
+    sort(all(V));
+    int ans = 0;
+    for (auto &i : V)
+    {
+        t -= i;
+        if (t >= 0)
         {
-            char x;
-            cin >> x;
-            pref[i][k] = pref[i][k - 1] + pref[i - 1][k] - pref[i - 1][k - 1] + (x == '*');
+            ans++;
         }
     }
-    while (q--)
-    {
-        ll y1, x1, y2, x2;
-        cin >> y1 >> x1 >> y2 >> x2;
-        cout << pref[y2][x2] - pref[y1 - 1][x2] - pref[y2][x1 - 1] + pref[y1 - 1][x1 - 1] << endl;
-    }
+    cout << ans << endl;
 }
 
 // Main function

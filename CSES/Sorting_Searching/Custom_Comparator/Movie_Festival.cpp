@@ -50,25 +50,28 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    // Key Idea of this problem is to use Prefix Sum 2D such that the existence of a tree = 1 otherwise 0
-    ll n, q;
-    cin >> n >> q;
-    vector<vector<ll>> pref(n + 1, vector<ll>(n + 1, 0));
-    for (ll i = 1; i <= n; i++)
+    int t;
+    cin >> t;
+    vector<pair<int, int>> V(t);
+    for (int i = 0; i < t; i++)
     {
-        for (ll k = 1; k <= n; k++)
+        int a, b;
+        cin >> a >> b;
+        V[i] = {a, b};
+    }
+    sort(all(V), [&](pair<int, int> a, pair<int, int> b)
+         { return a.second < b.second; });
+
+    int nbr_movies = 1, last_movie_watched = V[0].second;
+    for (int i = 1; i < t; i++)
+    {
+        if (V[i].first >= last_movie_watched)
         {
-            char x;
-            cin >> x;
-            pref[i][k] = pref[i][k - 1] + pref[i - 1][k] - pref[i - 1][k - 1] + (x == '*');
+            nbr_movies++;
+            last_movie_watched = V[i].second;
         }
     }
-    while (q--)
-    {
-        ll y1, x1, y2, x2;
-        cin >> y1 >> x1 >> y2 >> x2;
-        cout << pref[y2][x2] - pref[y1 - 1][x2] - pref[y2][x1 - 1] + pref[y1 - 1][x1 - 1] << endl;
-    }
+    cout << nbr_movies << endl;
 }
 
 // Main function
