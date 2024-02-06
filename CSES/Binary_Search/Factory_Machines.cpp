@@ -50,68 +50,37 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    ll n, t;
+    cin >> n >> t;
+    vector<ll> V(n);
+    for (auto &i : V)
     {
-        int n, k;
-        cin >> n >> k;
-        vector<int> V(n);
-        int sm = 0;
+        cin >> i;
+    }
+    ll i = 0, j = 1e18, mid, ans_global = 0;
+    while (i <= j)
+    {
+        mid = (i + j) / 2;
+        ll ans = 0;
         for (auto &i : V)
         {
-            cin >> i;
-            sm += i;
+            ans += mid / i;
+            if (ans >= t)
+            {
+                break;
+            }
         }
-        priority_queue<int, vector<int>, greater<int>> ones_i;
-        priority_queue<int, vector<int>, greater<int>> ones_j;
-        for (int i = 0; i < n; i++)
+        if (ans >= t)
         {
-            if (V[i] == 1)
-            {
-                ones_i.push(i);
-                ones_j.push(n - i - 1);
-            }
+            ans_global = mid;
+            j = mid - 1;
         }
-        int diff = sm - k, i = 0, j = n - 1, op = 0;
-        while (diff > 0)
+        else
         {
-            if (V[i] == 1)
-            {
-                i++;
-                diff--;
-                ones_i.pop();
-            }
-            else if (V[j] == 1)
-            {
-                j--;
-                diff--;
-                ones_j.pop();
-            }
-            else
-            {
-                int near_j = ones_j.top();
-                ones_j.pop();
-                int near_i = ones_i.top();
-                ones_i.pop();
-                if (near_j <= near_i)
-                {
-                    j--;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            op++;
-        }
-        if(diff < 0){
-            cout << -1 << endl;
-        }
-        else{
-            cout << op << endl;
+            i = mid + 1;
         }
     }
+    cout << ans_global << endl;
 }
 
 // Main function

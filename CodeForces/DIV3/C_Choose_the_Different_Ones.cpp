@@ -54,48 +54,53 @@ void solve()
     cin >> t;
     while (t--)
     {
-        int n, even = 0, odd = 0;
-        cin >> n;
-        vector<int> V(n);
-        map<int, int> mpp;
-
-        for (auto &i : V)
+        int n, m, k;
+        cin >> n >> m >> k;
+        set<int> A, B;
+        for (int i = 0; i < n; i++)
         {
-            cin >> i;
-            if (i % 2 == 0)
+            int x;
+            cin >> x;
+            A.insert(x);
+        }
+        for (int i = 0; i < m; i++)
+        {
+            int x;
+            cin >> x;
+            B.insert(x);
+        }
+        bool found = true;
+        vector<int> bjuj, a, b;
+        for (int i = 1; i <= k; i++)
+        {
+            if (A.find(i) != A.end() && B.find(i) != B.end())
             {
-                even++;
+                bjuj.push_back(i);
             }
+            else if (A.find(i) != A.end())
+            {
+                a.push_back(i);
+            }
+            else if (B.find(i) != B.end())
+                b.push_back(i);
             else
             {
-                odd++;
+                found = false;
             }
         }
-        int ans = 0;
-        sort(all(V));
-        bool res = false;
-        if (even % 2 != odd % 2)
+        if (!found)
+        {
+            cout << "NO" << endl;
+            continue;
+        }
+        int A_sz = a.size(), B_sz = b.size(), Bj_sz = bjuj.size();
+        if (A_sz > k / 2 || B_sz > k / 2 || A_sz + B_sz + Bj_sz != k)
         {
             cout << "NO" << endl;
         }
-        else if (even % 2 == 0)
-        {
-            cout << "YES" << endl;
-        }
         else
         {
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = i + 1; j < n; j++)
-                {
-                    if (V[i] % 2 != V[j] % 2 && abs(V[i] - V[j]) == 1)
-                    {
-                        res = true;
-                        break;
-                    }
-                }
-            }
-            cout << (res ? "YES" : "NO") << endl;
+            cout << "YES" << endl;
         }
     }
 }

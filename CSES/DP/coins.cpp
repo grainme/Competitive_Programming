@@ -41,42 +41,45 @@ void fast_io()
     cin.tie(NULL), cout.tie(NULL);
 }
 
-// void usaco()
-//{
-//   freopen('div7.in', 'r', stdin);
-//   freopen('div7.out', 'w', stdout);
-// }
+void usaco()
+{
+    freopen("ladder.in", "r", stdin);
+    freopen("ladder.out", "w", stdout);
+}
+
+const int MAXN = 1e5;
+vector<int> dp(MAXN, 0);
+
+int min_coins(int x, vector<int> V)
+{
+    // dp[i] = max sum bech wsselt L' i
+    dp[0] = 0, dp[1] = V[1];
+    for (int i = 2; i <= x; i++)
+    {
+        dp[i] = max(dp[i - 1] + V[i], dp[i - 2] + V[i]);
+    }
+    return dp[x];
+}
 
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    vector<int> V(n + 1, 0);
+    for (int i = 1; i <= n; i++)
     {
-        int n;
-        cin >> n;
-        vector<int> V(n);
-        for (auto &i : V)
-        {
-            cin >> i;
-        }
-        sort(all(V));
-        int mn = 1e9;
-        for (int i = 0; i < n - 1; i++)
-        {
-            mn = min(mn, V[i + 1] - V[i]);
-        }
-        cout << mn << endl;
+        cin >> V[i];
     }
+    cout << min_coins(n, V) << endl;
 }
 
 // Main function
 int main()
 {
+    usaco();
     fast_io();
     solve();
 }
 
 // Check Constraints next_permutation?
-// Long long or int !?

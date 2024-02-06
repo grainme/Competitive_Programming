@@ -1,0 +1,1 @@
+{"name":"Local: Coins_Change","url":"/home/marouane/Competitive_Programming/CSES/DP/Coins_Change.cpp","tests":[{"id":1707067862175,"input":"3 6\n1 3 4\n1 2 5 8 9 10","output":"1 2 2 2 3 3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/CSES/DP/Coins_Change.cpp","group":"local","local":true}

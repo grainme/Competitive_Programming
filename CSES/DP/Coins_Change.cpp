@@ -47,30 +47,35 @@ void fast_io()
 //   freopen('div7.out', 'w', stdout);
 // }
 
+// Practing DP
 // Problem's code
 void solve()
 {
-    ll t;
-    cin >> t;
-    while (t--)
+    int n, q;
+    cin >> n >> q;
+    vector<int> coins(n);
+    for (auto &i : coins)
     {
-        ll n;
-        cin >> n;
-        pair<ll, pair<ll, ll>> ps;
-        ps = {n, {0, n}};
-        for (ll i = 1; i < 1e6 ;i++)
+        cin >> i;
+    }
+    while (q--)
+    {
+        int s;
+        cin >> s;
+        vector<int> dp(s);
+        dp[0] = 1;
+        for (int i = 1; i <= s; i++)
         {
-            // 5 - 2 = 3
-            ll a = n - 2 * i;
-            if (abs(i - a) < ps.first)
+            for (auto &c : coins)
             {
-                ps = {abs(i - a), {i, a}};
-            }
-            else if(a<0){
-                break;
+                if (i - c >= 0)
+                {
+                    dp[i] += dp[i - c];
+                }
             }
         }
-        cout <<  ps.second.second << " " << ps.second.first << endl;
+
+        cout << dp[s] << endl;
     }
 }
 

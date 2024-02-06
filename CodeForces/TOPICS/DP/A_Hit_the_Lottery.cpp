@@ -50,41 +50,32 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    ll t;
-    cin >> t;
-    map<string, ll> mpp;
-    vector<pair<string, ll>> V;
-    for (ll i = 0; i < t; i++)
+    ll n;
+    cin >> n;
+    const int MAXN = 1e5;
+    vector<ll> dp(MAXN);
+    vector<int> V{1, 5, 10, 20, 100};
+    int ans_global = 0;
+    if (n >= 100)
     {
-        string s;
-        cin >> s;
-        ll n;
-        cin >> n;
-        V.push_back({s, n});
+        ans_global = n / 100;
+        n = n % (100 * ans_global);
     }
-    for (ll i = 0; i < t; i++)
+    // dp[i] = nmbr of coins needed to construct i
+    dp[0] = 0;
+    for (int i = 1; i <= n; i++)
     {
-        mpp[V[i].first] += V[i].second;
-    }
-    ll mx_pts = -10000;
-    for (auto &i : mpp)
-    {
-        mx_pts = max(mx_pts, i.second);
-    }
-
-    map<string, ll> mpp1;
-
-    for (ll i = 0; i < t; i++)
-    {
-        mpp1[V[i].first] += V[i].second;
-        if (mpp1[V[i].first] >= mx_pts && mpp[V[i].first] == mx_pts)
+        ll ans = inf;
+        for (auto &c : V)
         {
-            cout << V[i].first << endl;
-            return;
+            if (i - c >= 0)
+            {
+                ans = min(ans, dp[i - c] + 1);
+            }
         }
+        dp[i] = ans;
     }
-
-    // cout << mx_pts << endl;
+    cout << dp[n] + ans_global << endl;
 }
 
 // Main function

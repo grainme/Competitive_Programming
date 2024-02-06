@@ -50,49 +50,20 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int n, Q;
+    cin >> n >> Q;
+    vector<int> V(n);
+    for (auto &i : V)
     {
-        int n, k;
-        cin >> n >> k;
-        string s;
-        cin >> s;
-        map<char, int> mpp;
-        for (int i = 0; i < k; i++)
-        {
-            mpp[s[i]]++;
-        }
-        if (k == n)
-        {
-            cout << k - mpp['B'] << endl;
-        }
-        else if (mpp['B'] == k)
-        {
-            cout << 0 << endl;
-        }
-        else
-        {
-            // W W W B B
-            int back = 0, ans = k-mpp['B'], op = k-mpp['B'];
-            for (int i = k; i < n; i++)
-            {
-                mpp[s[back++]]--;
-                mpp[s[i]]++;
-                if (mpp['B'] == k)
-                {
-                    break;
-                }
-                else
-                {
-                    op = k - mpp['B'];
-                    ans = min(ans, op);
-                }
-            }
-            op = k - mpp['B'];
-            ans = min(ans, op);
-            cout << ans << endl;
-        }
+        cin >> i;
+    }
+    while (Q--)
+    {
+        int x;
+        cin >> x;
+        auto it = upper_bound(all(V), x);
+        --it;
+        cout << it - V.begin() + 1 << endl;
     }
 }
 
