@@ -26,3 +26,4 @@ When applying the Greedy approach, it is important to analyze the problem and as
 
 For more details and examples of the Greedy approach, refer to the code and explanations provided in the corresponding files.
 
+I'm writing this from VIM editor, please make sure to delete this as soon as possible via the github interface!
