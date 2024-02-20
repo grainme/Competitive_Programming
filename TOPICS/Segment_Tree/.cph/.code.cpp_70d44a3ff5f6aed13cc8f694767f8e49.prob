@@ -1,0 +1,1 @@
+{"name":"Local: code","url":"/home/marouane/Competitive_Programming/TOPICS/Segment_Tree/code.cpp","tests":[{"id":1708394692917,"input":"abacaba\n2\n3 6 1\n1 4 2","output":"baabcaa"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/TOPICS/Segment_Tree/code.cpp","group":"local","local":true}

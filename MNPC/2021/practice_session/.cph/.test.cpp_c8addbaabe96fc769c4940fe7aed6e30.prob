@@ -1,0 +1,1 @@
+{"name":"Local: test","url":"/home/marouane/Competitive_Programming/MNPC/2021/practice_session/test.cpp","tests":[{"id":1708168240051,"input":"2\nabbabcdeef\naacb","output":"6\n3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/MNPC/2021/practice_session/test.cpp","group":"local","local":true}

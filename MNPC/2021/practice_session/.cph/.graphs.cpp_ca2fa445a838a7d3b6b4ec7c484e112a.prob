@@ -1,0 +1,1 @@
+{"name":"Local: graphs","url":"/home/marouane/Competitive_Programming/MNPC/2021/practice_session/graphs.cpp","tests":[{"id":1708186110239,"input":"4 2\n1 2\n3 4","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/marouane/Competitive_Programming/MNPC/2021/practice_session/graphs.cpp","group":"local","local":true}
