@@ -1,0 +1,1 @@
+/home/marouane/Competitive_Programming/preparation_24/bronze/hustle/love_usernames/target/debug/love_usernames: /home/marouane/Competitive_Programming/preparation_24/bronze/hustle/love_usernames/src/main.rs

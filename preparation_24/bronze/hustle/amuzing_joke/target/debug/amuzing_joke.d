@@ -1,0 +1,1 @@
+/home/marouane/Competitive_Programming/preparation_24/bronze/hustle/amuzing_joke/target/debug/amuzing_joke: /home/marouane/Competitive_Programming/preparation_24/bronze/hustle/amuzing_joke/src/main.rs

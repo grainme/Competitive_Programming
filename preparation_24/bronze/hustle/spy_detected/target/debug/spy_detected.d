@@ -1,0 +1,1 @@
+/home/marouane/Competitive_Programming/preparation_24/bronze/hustle/spy_detected/target/debug/spy_detected: /home/marouane/Competitive_Programming/preparation_24/bronze/hustle/spy_detected/src/main.rs
