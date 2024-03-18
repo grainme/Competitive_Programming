@@ -1,0 +1,1 @@
+/home/grainme/CodeSpace/Competitive_Programming/preparation_24/codeforces/DIV3_913/prob_a/target/debug/prob_a: /home/grainme/CodeSpace/Competitive_Programming/preparation_24/codeforces/DIV3_913/prob_a/src/main.rs
