@@ -46,19 +46,39 @@ void fast_io()
 // Problem's code
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<ll> V(n);
-    for(auto &i: V){
-        cin >> i;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n, k;
+        cin >> n >> k;
+        string s = "[";
+        int x = k * n / 100;
+        if(x>2){
+            s+= "A";
+            s+="z";
+            x-=2;
+        }
+        else if(x>1){
+            s+= "A";
+            x--;
+        }
+        while(x>0)
+        {
+            s += "u";
+            x--;
+        }
+        
+        while ((int)s.size() < n+1)
+        {
+            s += "-";
+        }
+        s += "]";
+        if(s[s.length()-2]=='u'){
+            s[s.length()-2] = 'z';
+        }
+        cout << s << endl;
     }
-    for(int i = 0; i < n-1; i++){
-        ll a, b;
-        cin >> a >> b;
-        ll q = V[i]/a;
-        V[i+1] += b * q;
-    }
-    cout << V[n-1] << endl;
 }
 
 // Main function

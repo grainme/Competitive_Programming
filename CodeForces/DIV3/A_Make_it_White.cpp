@@ -19,7 +19,8 @@ typedef long long int ll;
 typedef unsigned long long int ull;
 typedef vector<int> vi;
 template <typename T>
-using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+using ordered_set =
+    tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
 #define debug(x) cout << (#x) << " = " << x << endl
 #define rep(start, end, step) for (int i = start; i < end; i += step)
 #define all(v) ((v).begin()), ((v).end())
@@ -35,10 +36,9 @@ const long long MOD = 1e9 + 7;
 #define eps 1e-9
 //----------GLOBALS----------
 
-void fast_io()
-{
-    ios::sync_with_stdio(NULL);
-    cin.tie(NULL), cout.tie(NULL);
+void fast_io() {
+  ios::sync_with_stdio(NULL);
+  cin.tie(NULL), cout.tie(NULL);
 }
 
 // void usaco()
@@ -48,30 +48,41 @@ void fast_io()
 // }
 
 // Problem's code
-void solve()
-{
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int n;
-        cin >> n;
-        string s;
-        cin >> s;
-        map<char, deque<int>> mpp;
-        for (int i = 0; i < n; i++)
-        {
-            mpp[s[i]].push_back(i);
+void solve() {
+  int t;
+  cin >> t;
+  while (t--) {
+    int n, m;
+    cin >> n >> m;
+    string s, q;
+    cin >> s >> q;
+    // 10011
+    // 1110
+    int l = 0, l1 = 0, ans = 0;
+    while (l < n && l1 < m) {
+      bool res = false;
+      char curr = s[l++];
+      while (l1 < m) {
+        if (q[l1] == curr) {
+          res = true;
+          ans++;
+          l1++;
+          break;
         }
-        cout << mpp['B'].back() - mpp['B'].front() + 1 << endl;
+        l1++;
+      }
+      if (!res) {
+        break;
+      }
     }
+    cout << ans << endl;
+  }
 }
 
 // Main function
-int main()
-{
-    fast_io();
-    solve();
+int main() {
+  fast_io();
+  solve();
 }
 
 // Check Constraints next_permutation?

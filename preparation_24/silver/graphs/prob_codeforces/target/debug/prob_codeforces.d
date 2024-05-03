@@ -1,0 +1,1 @@
+/home/grainme/CodeSpace/Competitive_Programming/preparation_24/silver/graphs/prob_codeforces/target/debug/prob_codeforces: /home/grainme/CodeSpace/Competitive_Programming/preparation_24/silver/graphs/prob_codeforces/src/main.rs

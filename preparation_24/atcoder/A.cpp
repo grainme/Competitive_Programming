@@ -1,19 +1,28 @@
 #include <bits/stdc++.h>
+#include <vector>
 
 using namespace std;
 
 int main(void) {
-  string t;
-  cin >> t;
-  string res = "";
-  int n = t.size();
-  pair<int, int> p = {-1, -1};
+  int n;
+  cin >> n;
+  vector<string> v, p;
   for (int i = 0; i < n; i++) {
-    if (t[i] == '|' && p.first == -1) {
-      p.first = i;
-    } else if (t[i] == '|') {
-      p.second = i;
+    string s;
+    cin >> s;
+    v.push_back(s);
+  }
+  for (int i = 0; i < n; i++) {
+    string s;
+    cin >> s;
+    p.push_back(s);
+  }
+  for (int i = 0; i < n; i++) {
+    for (int k = 0; k < n; k++) {
+      if (p[i][k] != v[i][k]) {
+        cout << ++i << " " << ++k << endl;
+        break;
+      }
     }
   }
-  cout << t.substr(0, p.first) << t.substr(p.second + 1, n) << endl;
 }

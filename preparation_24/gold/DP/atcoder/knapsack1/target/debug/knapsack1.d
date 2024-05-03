@@ -1,0 +1,1 @@
+/home/grainme/CodeSpace/Competitive_Programming/preparation_24/gold/DP/atcoder/knapsack1/target/debug/knapsack1: /home/grainme/CodeSpace/Competitive_Programming/preparation_24/gold/DP/atcoder/knapsack1/src/main.rs
